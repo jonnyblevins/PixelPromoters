@@ -156,9 +156,8 @@ VALUES (1, 'FarceBook', 'JaneDoe@newclient.com', '2023-01-01', '2023-12-31');
 GO
 
 --Now that all my structures are in place, I want to give it the actual data with BULK INSERT, just to see if I could do it.
---This wasn't working at all until I found some Hex nonsense about 0x0a versus \r\n or anything similar. ascittable.com tells me the A represents the same LF / new line issue you can find on VS Code.
---This actually seems it won't work; I've made it a little too complicated in my diagram having some key values. Line 160, 171, 182, and 193 are getting constant "Cannot obtain the required interface
---BULK INSERT Campaign
+--This wasn't working at all until I found some Hexadecimal info online, translates to \n or LF. Unclear to me.
+--BULK INSERT PixlePromoters.dbo.Campaign
 --FROM 'C:\tmp\Campaign.csv'
 --WITH (
 --	FORMAT = 'CSV',
@@ -169,47 +168,47 @@ GO
 --);
 --GO
 
---BULK INSERT Client
+--BULK INSERT PixlePromoters.dbo.Client
 --FROM 'C:\tmp\Client.csv'
 --WITH (
 --	FORMAT = 'CSV',
---	FIRSTROW = 2,
 --	DATAFILETYPE = 'char',
 --    FIELDTERMINATOR = ',',
---    ROWTERMINATOR = '0x0a'
+--    ROWTERMINATOR = '0x0a',
+--    FIRSTROW = 2
 --);
 --GO
 
---BULK INSERT Department
+--BULK INSERT PixlePromoters.dbo.Department
 --FROM 'C:\tmp\Department.csv'
 --WITH (
 --	FORMAT = 'CSV',
---	FIRSTROW = 2,
 --	DATAFILETYPE = 'char',
 --    FIELDTERMINATOR = ',',
---    ROWTERMINATOR = '0x0a'
+--    ROWTERMINATOR = '0x0a',
+--    FIRSTROW = 2
 --);
 --GO
 
---BULK INSERT Employee
+--BULK INSERT PixlePromoters.dbo.Employee
 --FROM 'C:\tmp\Employee.csv'
 --WITH (
 --	FORMAT = 'CSV',
---	FIRSTROW = 2,
 --	DATAFILETYPE = 'char',
 --    FIELDTERMINATOR = ',',
---    ROWTERMINATOR = '0x0a'
+--    ROWTERMINATOR = '0x0a',
+--    FIRSTROW = 2
 --);
 --GO
 
---BULK INSERT SocialMedia
---FROM 'C:\tmp\SocialMedia.csv'
+--BULK INSERT PixlePromoters.dbo.SocialMedia
+--FROM 'C:\tmp\Social Media.csv'
 --WITH (
 --	FORMAT = 'CSV',
---	FIRSTROW = 2,
 --	DATAFILETYPE = 'char',
 --    FIELDTERMINATOR = ',',
---    ROWTERMINATOR = '0x0a'
+--    ROWTERMINATOR = '0x0a',
+--    FIRSTROW = 2
 --);
 --GO
 
@@ -225,3 +224,5 @@ GO
 
 --This SELECTs from the previous "PictureThePixel" compilation VIEW. Leaving at the end because it seems to be easier accessed and changed that way.
 SELECT * FROM PictureThePixel;
+
+SELECT * FROM Campaign, Client, Department, Employee, SocialMedia
